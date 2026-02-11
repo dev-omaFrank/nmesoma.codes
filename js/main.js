@@ -117,10 +117,10 @@ const pages = {
                                 <input type="radio" name="hasProject" value="yes" onchange="handleProjectChange(this.value)">
                                 <span>Yes, I have a specific project</span>
                             </label>
-                            // <label class="radio-option">
-                            //     <input type="radio" name="hasProject" value="no" onchange="handleProjectChange(this.value)">
-                            //     <span>No, I'm just exploring options</span>
-                            // </label>
+                            <!-- <label class="radio-option">
+                                <input type="radio" name="hasProject" value="no" onchange="handleProjectChange(this.value)">
+                                <span>No, I'm just exploring options</span>
+                            </label> -->
                         </div>
                     </div>
 
