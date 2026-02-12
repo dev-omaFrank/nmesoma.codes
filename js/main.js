@@ -62,10 +62,106 @@ const pages = {
                 </div>
 
                 <div class="cta-section">
-                    <button class="btn btn-lg btn-primary cta-button" onclick="goToQuestionnaire()">
-                        Start a Project
-                        <span>→</span>
-                    </button>
+                      <div class="questionnaire">
+            <div class="questionnaire-container">
+                <div class="questionnaire-header">
+                    <h1>Let's Qualify Your Project</h1>
+                    <p>Answer a few quick questions so I can determine if we're a good fit for your project.</p>
+                </div>
+
+                <form id="questionnaireForm" onsubmit="handleQuestionnaireSubmit(event)">
+                    <!-- Question 1: Do you have a project? -->
+                    <div class="glass-card question-card">
+                        <h3>Do you have a project in mind?</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="hasProject" value="yes" onchange="handleProjectChange(this.value)" required>
+                                <span>Yes, I have a specific project</span>
+                            </label>
+                           <!-- <label class="radio-option">
+                                <input type="radio" name="hasProject" value="no" onchange="handleProjectChange(this.value)" required>
+                                <span>No, I'm just exploring options</span>
+                            </label> -->
+                        </div>
+                    </div>
+
+                    <!-- Question 2: Project Type (conditional) -->
+                    <div id="projectTypeQuestion" class="glass-card question-card hidden">
+                        <h3>What type of project are you looking for?</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="projectType" value="web" required>
+                                <span>Web Application</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="projectType" value="mobile" required>
+                                <span>Mobile App</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="projectType" value="both" required>
+                                <span>Both Web & Mobile</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="projectType" value="other" required>
+                                <span>Something Else</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3: Timeline (conditional) -->
+                    <div id="timelineQuestion" class="glass-card question-card hidden">
+                        <h3>What's your timeline?</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="timeline" value="urgent" required>
+                                <span>ASAP (within 1-2 months)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="timeline" value="moderate" required>
+                                <span>Flexible (3-6 months)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="timeline" value="flexible" required>
+                                <span>Very Flexible (6+ months)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4: Budget (conditional) -->
+                    <div id="budgetQuestion" class="glass-card question-card hidden">
+                        <h3>What's your budget range?</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="budget" value="small" required>
+                                <span>At most NGN150,000</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="budget" value="medium" required>
+                                <span>NGN250,000 - NGN300,000</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="budget" value="large" required>
+                                <span>NGN500,000+</span>
+                            </label>
+                            <label class="radio-option" required>
+                                <input type="radio" name="budget" value="unsure">
+                                <span>Specify budget</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="form-buttons">
+                       <!-- <button type="button" class="btn btn-outline" onclick="goHome()">
+                            Back
+                        </button> -->
+                        <button type="submit" class="btn btn-lg btn-primary" id="submitBtn">
+                            Continue
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
                     <p class="cta-subtext">Let's discuss your project and see if we're a great fit.</p>
                 </div>
             </div>
@@ -101,106 +197,7 @@ const pages = {
     `,
 
     questionnaire: `
-        <div class="questionnaire">
-            <div class="questionnaire-container">
-                <div class="questionnaire-header">
-                    <h1>Let's Qualify Your Project</h1>
-                    <p>Answer a few quick questions so I can determine if we're a good fit for your project.</p>
-                </div>
-
-                <form id="questionnaireForm" onsubmit="handleQuestionnaireSubmit(event)">
-                    <!-- Question 1: Do you have a project? -->
-                    <div class="glass-card question-card">
-                        <h3>Do you have a project in mind?</h3>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="hasProject" value="yes" onchange="handleProjectChange(this.value)">
-                                <span>Yes, I have a specific project</span>
-                            </label>
-                            <!-- <label class="radio-option">
-                                <input type="radio" name="hasProject" value="no" onchange="handleProjectChange(this.value)">
-                                <span>No, I'm just exploring options</span>
-                            </label> -->
-                        </div>
-                    </div>
-
-                    <!-- Question 2: Project Type (conditional) -->
-                    <div id="projectTypeQuestion" class="glass-card question-card hidden">
-                        <h3>What type of project are you looking for?</h3>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="projectType" value="web">
-                                <span>Web Application</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="projectType" value="mobile">
-                                <span>Mobile App</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="projectType" value="both">
-                                <span>Both Web & Mobile</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="projectType" value="other">
-                                <span>Something Else</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Question 3: Timeline (conditional) -->
-                    <div id="timelineQuestion" class="glass-card question-card hidden">
-                        <h3>What's your timeline?</h3>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="timeline" value="urgent">
-                                <span>ASAP (within 1-2 months)</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="timeline" value="moderate">
-                                <span>Flexible (3-6 months)</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="timeline" value="flexible">
-                                <span>Very Flexible (6+ months)</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Question 4: Budget (conditional) -->
-                    <div id="budgetQuestion" class="glass-card question-card hidden">
-                        <h3>What's your budget range?</h3>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="budget" value="small">
-                                <span>At most NGN150,000</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="budget" value="medium">
-                                <span>NGN250,000 - NGN300,000</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="budget" value="large">
-                                <span>NGN500,000+</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="budget" value="unsure">
-                                <span>Not sure yet</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Form Buttons -->
-                    <div class="form-buttons">
-                        <button type="button" class="btn btn-outline" onclick="goHome()">
-                            Back
-                        </button>
-                        <button type="submit" class="btn btn-lg btn-primary" id="submitBtn">
-                            Continue
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+      
     `,
 
     thankYou: `
@@ -258,7 +255,7 @@ function goToQuestionnaire() {
 
 function handleProjectChange(value) {
     state.responses.hasProject = value;
-    
+
     const projectTypeQuestion = document.getElementById('projectTypeQuestion');
     const timelineQuestion = document.getElementById('timelineQuestion');
     const budgetQuestion = document.getElementById('budgetQuestion');
@@ -287,7 +284,23 @@ function handleQuestionnaireSubmit(event) {
     const timeline = formData.get('timeline');
     const budget = formData.get('budget');
 
-    // Make responses more readable
+    // // Store in localStorage
+    // const responses = {
+    //     hasProject,
+    //     projectType,
+    //     timeline,
+    //     budget
+    // };
+
+    // localStorage.setItem("projectResponses", JSON.stringify(responses));
+
+    // If no project → go to thank you page
+    if (hasProject === "no") {
+        render("thankYou");
+        return;
+    }
+
+    // Maps
     const projectTypeMap = {
         web: "Web Application",
         mobile: "Mobile App",
@@ -305,32 +318,24 @@ function handleQuestionnaireSubmit(event) {
         small: "Up to NGN150,000",
         medium: "NGN250,000 – NGN300,000",
         large: "NGN500,000+",
-        unsure: "Not sure yet"
+        unsure: "I'd like to specify my budget"
     };
 
-    let message = "";
-
-    if (hasProject === "no") {
-        render("thankYou")
-        return;
-    } else {
-        message =
-            "Hi Nmesoma 👋,\n\n" +
-            "I have a project I'd like to discuss:\n\n" +
-            "• Project Type: " + (projectTypeMap[projectType] || projectType) + "\n" +
-            "• Timeline: " + (timelineMap[timeline] || timeline) + "\n" +
-            "• Budget: " + (budgetMap[budget] || budget) + "\n\n" +
-            "Looking forward to working with you!";
-    }
+    let message =
+        "Hi Nmesoma 👋,\n\n" +
+        "I have a project I'd like to discuss:\n\n" +
+        "• Project Type: " + (projectTypeMap[projectType] || projectType) + "\n" +
+        "• Timeline: " + (timelineMap[timeline] || timeline) + "\n" +
+        "• Budget: " + (budgetMap[budget] || budget) + "\n\n" +
+        "Looking forward to working with you!";
 
     const encodedMessage = encodeURIComponent(message);
-
     const phoneNumber = "2348157376927";
-
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     window.location.href = whatsappURL;
 }
+
 
 
 
